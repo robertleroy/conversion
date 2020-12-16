@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg8" version="1.1" viewBox="0 0 192 192">
+  <defs id="defs2">
+    <linearGradient id="linearGradient1729">
+      <stop id="stop1725" offset="0" stop-color="#000" stop-opacity="1"/>
+      <stop id="stop1727" offset="1" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linearGradient1721">
+      <stop id="stop1717" offset="0" stop-color="#000" stop-opacity="1"/>
+      <stop id="stop1719" offset="1" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linearGradient1723" x1="32" x2="144" y1="233.898" y2="233.898" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient1721"/>
+    <linearGradient id="linearGradient1731" x1="48" x2="160" y1="281.133" y2="281.133" gradientTransform="rotate(180 104 281.133)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient1729"/>
+  </defs>
+  <g id="layer1" display="inline" transform="translate(0 -161.533)">
+    <path id="path4" fill="url(#linearGradient1731)" fill-opacity="1" stroke-width="7.111" d="M143.716 291.338L160 307.622v-56.889h-56.889l16.356 16.356c-10.383 14.009-26.88 23.111-45.654 23.111-9.315 0-18.062-2.276-25.813-6.258 10.809 16.57 29.44 27.591 50.702 27.591 17.92 0 33.92-7.893 45.014-20.195z"/>
+    <path id="path6" fill="url(#linearGradient1723)" fill-opacity="1" stroke-width="7.111" d="M118.187 224.867c9.315 0 18.062 2.275 25.813 6.257a60.295 60.295 0 00-50.702-27.59c-17.92 0-33.92 7.822-45.014 20.195L32 207.373v56.89h56.889l-16.356-16.356c10.383-13.938 26.88-23.04 45.654-23.04z"/>
+    <path id="rect1733" fill="#fff" fill-opacity="0" stroke="none" stroke-dasharray="none" stroke-linejoin="bevel" stroke-miterlimit="4" stroke-opacity="1" stroke-width="0" d="M0 161.533h192v192H0z" opacity="1" paint-order="markers fill stroke"/>
+  </g>
+</svg>

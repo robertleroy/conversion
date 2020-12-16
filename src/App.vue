@@ -1,0 +1,449 @@
+  <script>
+  import Dropdown from './components/Dropdown.vue'
+  import Unit from './components/Unit.vue'
+
+  export default {
+    name: 'App',
+    components: {
+      'Dropdown': Dropdown,
+      'Unit': Unit
+    },
+    data() {
+      return {
+        options: [
+          { value: "distance", name: "Distance" },
+          { value: "weight", name: "Weight" },
+          { value: "speed", name: "Speed" },
+          { value: "temperature", name: "Temperature" },      
+          { value: "time", name: "Time" }
+        ],
+        selectedOption: {},
+        mi: 1, yd: 0, ft: 0, inch: 0, km: 0, m: 0, cm: 0,
+        lb: 1, oz: 0, kg: 0, g: 0, st: 0,
+        mph: 1, kph: 0, knots: 0, mach: 0,
+        f: 32, c: 0, k: 0,
+        yr: 1, day: 0, hr: 0, mn: 0, sec: 0,
+      }
+    },
+    methods: {
+      updateOption(option) {
+        this.selectedOption = option;
+        
+        switch (this.selectedOption.value)
+        {
+          case "distance":
+            this.convertMiles();
+            break;
+          case "weight":
+            this.convertPounds();
+            break;
+          case "speed":
+            this.convertMPH();
+            break;
+          case "temperature":
+            this.convertF();
+            break;
+          case "time":
+            this.convertYears();
+            break;
+          default:
+        }
+      },
+
+      // #region distance
+      convertFeet()
+      {
+        this.mi = parseFloat((this.ft * 0.00018939).toFixed(2));
+        this.yd = parseFloat((this.ft * 0.33333).toFixed(2));
+        this.inch = parseFloat((this.ft * 12).toFixed(2));
+        this.km = parseFloat((this.ft / 3280.8).toFixed(2));
+        this.m = parseFloat((this.ft / 3.2808).toFixed(2));
+        this.cm = parseFloat((this.ft / 0.032808).toFixed(2));
+      },
+
+      convertMeters()
+      {
+        this.mi = parseFloat((this.m * 0.00062137).toFixed(2));
+        this.yd = parseFloat((this.m * 1.0936).toFixed(2));
+        this.ft = parseFloat((this.m * 3.2808).toFixed(2));
+        this.inch = parseFloat((this.m * 39.370).toFixed(2));
+        this.km = parseFloat((this.m / 1000).toFixed(2));
+        this.cm = parseFloat((this.m / 0.01).toFixed(2));
+      },
+
+      convertInches()
+      {
+        this.mi = parseFloat((this.inch * 0.000015783).toFixed(2));
+        this.yd = parseFloat((this.inch * 0.027778).toFixed(2));
+        this.ft = parseFloat((this.inch * 0.083333).toFixed(2));
+        this.km = parseFloat((this.inch / 39370).toFixed(2));
+        this.m = parseFloat((this.inch / 39.370).toFixed(2));
+        this.cm = parseFloat((this.inch / 0.39370).toFixed(2));
+      },
+
+      convertCentimeters()
+      {
+        this.mi = parseFloat((this.cm * 0.0000062137).toFixed(2));
+        this.yd = parseFloat((this.cm * 0.010936).toFixed(2));
+        this.ft = parseFloat((this.cm * 0.032808).toFixed(2));
+        this.inch = parseFloat((this.cm * 0.39370).toFixed(2));
+        this.km = parseFloat((this.cm / 100000).toFixed(2));
+        this.m = parseFloat((this.cm / 100).toFixed(2));
+      },
+
+      convertYards()
+      {
+        this.mi = parseFloat((this.yd * 0.00056818).toFixed(2));
+        this.ft = parseFloat((this.yd * 3).toFixed(2));
+        this.inch = parseFloat((this.yd * 36).toFixed(2));
+        this.km = parseFloat((this.yd / 1093.6).toFixed(2));
+        this.m = parseFloat((this.yd / 1.0936).toFixed(2));
+        this.cm = parseFloat((this.yd / 0.010936).toFixed(2));
+      },
+
+      convertKilometers()
+      {
+        this.mi = parseFloat((this.km * 0.62137).toFixed(2));
+        this.yd = parseFloat((this.km * 1093.6).toFixed(2));
+        this.ft = parseFloat((this.km * 3280.8).toFixed(2));
+        this.inch = parseFloat((this.km * 39370).toFixed(2));
+        this.m = parseFloat((this.km * 1000).toFixed(2));
+        this.cm = parseFloat((this.km * 100000).toFixed(2));
+      },
+
+      convertMiles()
+      {
+        this.yd = parseFloat((this.mi * 1760).toFixed(2));
+        this.ft = parseFloat((this.mi * 5280).toFixed(2));
+        this.inch = parseFloat((this.mi * 63360).toFixed(2));
+        this.km = parseFloat((this.mi / 0.62137).toFixed(2));
+        this.m = parseFloat((this.mi / 0.00062137).toFixed(2));
+        this.cm = parseFloat((this.mi / 0.0000062137).toFixed(2));
+      },
+      // #endregion distance
+
+      // #region weight
+      convertPounds()
+      {
+        this.kg = parseFloat((this.lb / 2.2046).toFixed(2));
+        this.oz = parseFloat((this.lb * 16).toFixed(2));
+        this.g = parseFloat((this.lb / 0.0022046).toFixed(2));
+        this.st = parseFloat((this.lb * 0.071429).toFixed(2));
+      },
+
+      convertKilograms()
+      {
+        this.lb = parseFloat((this.kg * 2.2046).toFixed(2));
+        this.oz = parseFloat((this.kg * 35.274).toFixed(2));
+        this.g = parseFloat((this.kg * 1000).toFixed(2));
+        this.st = parseFloat((this.kg * 0.1574).toFixed(2));
+      },
+
+      convertOunces()
+      {
+        this.lb = parseFloat((this.oz * 0.0625).toFixed(2));
+        this.kg = parseFloat((this.oz / 35.274).toFixed(2));
+        this.g = parseFloat((this.oz / 0.035274).toFixed(2));
+        this.st = parseFloat((this.oz * 0.0044643).toFixed(2));
+      },
+
+      convertGrams()
+      {
+        this.lb = parseFloat((this.g * 0.0022046).toFixed(2));
+        this.kg = parseFloat((this.g / 1000).toFixed(2));
+        this.oz = parseFloat((this.g * 0.035274).toFixed(2));
+        this.st = parseFloat((this.g * 0.00015747).toFixed(2));
+      },
+
+      convertStones()
+      {
+        this.lb = parseFloat((this.st * 14).toFixed(2));
+        this.kg = parseFloat((this.st / 0.15747).toFixed(2));
+        this.oz = parseFloat((this.st * 224).toFixed(2));
+        this.g = parseFloat((this.st / 0.00015747).toFixed(2));
+      },
+      // #endregion weight
+
+      // #region speed
+      convertMPH()
+      {
+        this.kph = parseFloat((this.mph * 1.609344).toFixed(2));
+        this.mach = parseFloat((this.mph / 761.207).toFixed(2));
+        this.knots = parseFloat((this.mph / 1.150779).toFixed(2));
+      },
+
+      convertKPH()
+      {
+        this.mph = parseFloat((this.kph / 1.609344).toFixed(2));
+        this.mach = parseFloat((this.kph / 1225.044).toFixed(2));
+        this.knots = parseFloat((this.kph / 1.852).toFixed(2));
+      },
+
+      convertKnots()
+      {
+        this.mph = parseFloat((this.knots * 1.150779).toFixed(2));
+        this.kph = parseFloat((this.knots * 1.852).toFixed(2));
+        this.mach = parseFloat((this.knots / 661.4708).toFixed(2));
+      },
+
+      convertMach()
+      {
+        this.mph = parseFloat((this.mach * 761.207).toFixed(2));
+        this.kph = parseFloat((this.mach * 1225.044).toFixed(2));
+        this.knots = parseFloat((this.mach * 661.4708).toFixed(2));
+      },
+      // #endregion speed
+
+      // #region temperature
+      convertF()
+      {
+        this.c = parseFloat(((this.f - 32) / 1.8).toFixed(2));
+        this.k = parseFloat((((this.f - 32) / 1.8) + 273.15).toFixed(2));
+      },
+
+      convertC()
+      {
+        this.f = parseFloat(((this.c * 1.8) + 32).toFixed(2));
+        this.k = parseFloat((this.c * 1 + 273.15).toFixed(2));
+      },
+
+      convertK()
+      {
+        this.f = parseFloat((((this.k - 273.15) * 1.8) + 32).toFixed(2));
+        this.c = parseFloat((this.k - 273.15).toFixed(2));
+      },
+      // #endregion temperature    
+
+      // #region time
+      convertYears() {
+        this.day = parseFloat((this.yr*365.25).toFixed(2));
+        this.hr = parseFloat((this.yr*8766).toFixed(2));
+        this.mn = parseFloat((this.yr*525960).toFixed(2));
+        this.sec = parseFloat((this.yr*31557600).toFixed(2));
+      },
+
+      convertDays() {
+        this.yr = parseFloat((this.day*0.002737850787132).toFixed(2));
+        this.hr = parseFloat((this.day*24).toFixed(2));
+        this.mn = parseFloat((this.day*1440).toFixed(2));
+        this.sec = parseFloat((this.day*86400).toFixed(2));
+      }, 
+
+      convertHours() {
+        this.yr = parseFloat((this.hr*0.000114077116131).toFixed(2));
+        this.day = parseFloat((this.hr*0.041666666666667).toFixed(2));
+        this.mn = parseFloat((this.hr*60).toFixed(2));
+        this.sec = parseFloat((this.hr*3600).toFixed(2));
+      }, 
+
+      convertMinutes() {
+        this.yr = parseFloat((this.mn*0.000001901285269).toFixed(2));
+        this.day = parseFloat((this.mn*0.000694444444444).toFixed(2));
+        this.hr = parseFloat((this.mn*0.016666666666667).toFixed(2));
+        this.sec = parseFloat((this.mn*60).toFixed(2));
+      },   
+
+      convertSeconds() {
+        this.yr = parseFloat((this.sec*0.000000031688088).toFixed(2));
+        this.day = parseFloat((this.sec*0.0000115740740740741).toFixed(2));
+        this.hr = parseFloat((this.sec*0.000277777777778).toFixed(2));
+        this.mn = parseFloat((this.sec*0.016666666666667).toFixed(2));
+      },  
+      // #endregion time  
+    }, /* end methods */
+
+    mounted()
+    {
+      this.selectedOption = this.options[0];
+      this.convertMiles();
+    }
+  }
+</script>
+
+<template>
+  <div id="appgrid" v-cloak>
+    <header>
+      <Dropdown 
+        :options="options"
+        @selected="updateOption"/>
+    </header>
+
+    <main>
+      <!-- #region distance -->
+      <div class="distance"  v-if="selectedOption.value === 'distance'">
+        <div class="imperial">
+          <Unit label="Miles"
+            v-model="mi"
+            @input="convertMiles"></Unit>
+          <Unit label="Yards"
+            v-model="yd"
+            @input="convertYards"></Unit>
+          <Unit label="Feet"
+            v-model="ft"
+            @input="convertFeet"></Unit>
+          <Unit label="Inches"
+            v-model="inch"
+            @input="convertInches"></Unit>
+        </div>
+        <div class="metric">
+          <Unit label="Km"
+            v-model="km"
+            @input="convertKilometers"></Unit>
+          <Unit label="Meters"
+            v-model="m"
+            @input="convertMeters"></Unit>
+          <Unit label="Cm"
+            v-model="cm"
+            @input="convertCentimeters"></Unit>
+        </div>
+      </div>
+      <!-- #endregion distance -->
+
+      <!-- #region weight -->
+      <div class="weight" v-if="selectedOption.value === 'weight'">
+        <div class="imperial">
+          <Unit label="Pounds"
+            v-model="lb"
+            @input="convertPounds"></Unit>
+          <Unit label="Ounces"
+            v-model="oz"
+            @input="convertOunces"></Unit>
+        </div>
+        <div class="metric">
+          <Unit label="Kg"
+            v-model="kg"
+            @input="convertKilograms"></Unit>
+          <Unit label="Grams"
+            v-model="g"
+            @input="convertGrams"></Unit>
+          <Unit label="Stone"
+            v-model="st"
+            @input="convertStones"></Unit>
+        </div>
+      </div>
+      <!-- #endregion weight -->
+
+      <!-- #region speed -->
+      <div class="speed" v-if="selectedOption.value === 'speed'">
+        <div class="scale">
+          <Unit label="Mph"
+            v-model="mph"
+            @input="convertMPH"></Unit>
+          <Unit label="Km / h"
+            v-model="kph"
+            @input="convertKPH"></Unit>
+          <Unit label="Knots"
+            v-model="knots"
+            @input="convertKnots"></Unit>
+          <Unit label="Mach"
+            v-model="mach"
+            @input="convertMach"></Unit>
+        </div>
+      </div>
+      <!-- #endregion speed -->
+
+      <!-- #region temperature -->
+      <div class="temperature" v-if="selectedOption.value === 'temperature'">
+        <div class="scale">
+          <Unit label="Fahrenheit"
+            v-model="f"
+            @input="convertF"></Unit>
+          <Unit label="Celcius"
+            v-model="c"
+            @input="convertC"></Unit>
+          <Unit label="Kelvin"
+            v-model="k"
+            @input="convertK"></Unit>
+        </div>
+      </div>
+      <!-- #endregion temperature -->
+
+      <!-- #region time -->
+      <div class="time" v-if="selectedOption.value === 'time'"> 
+        <div class="scale">
+          <Unit label="Years"
+                    v-model="yr"
+                    @input="convertYears"></Unit>
+          <Unit label="Days"
+                    v-model="day"
+                    @input="convertDays"></Unit>
+          <Unit label="Hours"
+                    v-model="hr"
+                    @input="convertHours"></Unit>
+          <Unit label="Minutes"
+                    v-model="mn"
+                    @input="convertMinutes"></Unit>
+          <Unit label="Seconds"
+                    v-model="sec"
+                    @input="convertSeconds"></Unit>
+        </div>
+      </div>
+       <!-- #endregion time -->
+    </main>
+
+  </div> 
+</template>
+
+<style lang="scss">
+  @import './scss/baseline';
+
+  #appgrid {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    
+    display: grid;
+    grid-template-rows: auto 1fr;
+    max-width:46rem;
+    margin: 0 auto;
+  }
+
+  
+  @media (min-height: 450px) and (min-width: 550px){
+    #appgrid{
+        padding-top:10vh
+    }
+  }
+
+  header, main {
+    padding: 1rem 2rem;
+  }
+
+  header {    
+    display:grid;
+    justify-content:stretch;
+    align-items:center;
+    grid-auto-flow:column;
+    grid-gap:1rem;
+  }
+
+  main {
+    overflow-y: auto;
+  }
+
+  .distance,.weight{
+    display:grid;
+    grid-template-columns:1fr;
+    justify-content:space-between;
+    grid-gap:1rem 3rem;
+    max-width:46rem
+  }
+  @media (min-width: 24rem){
+      .distance,.weight{
+          grid-template-columns:1fr 1fr
+      }
+  }
+  .imperial,.metric{
+      display:grid;
+      justify-content:stretch;
+      align-content:start;
+      grid-gap:1rem 0
+  }
+  .speed,.temperature,.time{
+      max-width:24rem;
+      margin:auto
+  }
+</style>
+
