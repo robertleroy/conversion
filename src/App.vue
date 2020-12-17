@@ -263,7 +263,6 @@
 <template>
   <div id="appgrid" v-cloak>
     <header>
-      test
       <Dropdown 
         :options="options"
         @selected="updateOption"/>
