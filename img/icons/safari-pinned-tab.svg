@@ -1,3 +1,7 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M8.00251 14.9297L0 1.07422H6.14651L8.00251 4.27503L9.84583 1.07422H16L8.00251 14.9297Z" fill="black"/>
+<svg xmlns="http://www.w3.org/2000/svg" id="svg8" version="1.1" viewBox="0 0 16 16">
+  <g id="layer1" transform="translate(0 -161.533)">
+    <path id="path4" fill="#000" fill-opacity="1" stroke-width="1" d="M13.11 173.208l1.89 1.875v-6.55H8.397l1.898 1.883a6.59 6.59 0 01-5.299 2.661 6.574 6.574 0 01-2.996-.72 7.032 7.032 0 005.885 3.176c2.08 0 3.937-.908 5.225-2.325z"/>
+    <path id="path6" fill="#000" fill-opacity="1" stroke-width="1" d="M11.004 165.992c1.081 0 2.096.263 2.996.722a6.999 6.95 0 00-5.885-3.18c-2.08 0-3.937.901-5.225 2.327L1 163.976v6.557h6.603l-1.898-1.885a6.603 6.603 0 015.299-2.656z"/>
+    <path id="rect1733" fill="#fff" fill-opacity="0" stroke="none" stroke-dasharray="none" stroke-linejoin="bevel" stroke-miterlimit="4" stroke-opacity="1" stroke-width="0" d="M0 161.533h16v16H0z" opacity="1" paint-order="markers fill stroke"/>
+  </g>
 </svg>
